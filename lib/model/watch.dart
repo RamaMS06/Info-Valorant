@@ -17,7 +17,7 @@ List<WatchTrailerModel> listTrailer = [
   WatchTrailerModel(
       image: 'https://media.giphy.com/media/eV08lydIMcTftXX3vi/giphy.gif',
       title: '''DUELIST // VALORANT Cinematic Official Launch Trailer''',
-      desc: ''' The fight has just begun.
+      desc: '''The fight has just begun.
 VALORANT, Riot Games' 5v5 character-based tactical shooter game is available for free
 ''',
       index: "1",
@@ -26,7 +26,7 @@ VALORANT, Riot Games' 5v5 character-based tactical shooter game is available for
   WatchTrailerModel(
       image: 'https://c.tenor.com/UBem9pU9YgsAAAAC/yoru-valorant.gif',
       title: '''DUELIST // VALORANT Cinematic Official Launch Trailer''',
-      desc: ''' The fight has just begun.
+      desc: '''The fight has just begun.
 VALORANT, Riot Games' 5v5 character-based tactical shooter game is available for free
 ''',
       index: "2",

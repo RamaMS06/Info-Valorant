@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "395736283563",
+    "project_id": "infovalorant-bfb85",
+    "storage_bucket": "infovalorant-bfb85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395736283563:android:68e1fab7cdb0ad426abaee",
+        "android_client_info": {
+          "package_name": "com.rama.infovalorant.infovalorant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395736283563-0ahll6qmqsd44gurstovbkha4e5v19nu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rama.infovalorant.infovalorant",
+            "certificate_hash": "c004779206b7228907679023f4ce6b312916bb36"
+          }
+        },
+        {
+          "client_id": "395736283563-6eg6hibaugin1ro8197k1foqu75nhm99.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkyngy_xsW8aBGER9KlUHFbETfoasTDZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "395736283563-6eg6hibaugin1ro8197k1foqu75nhm99.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

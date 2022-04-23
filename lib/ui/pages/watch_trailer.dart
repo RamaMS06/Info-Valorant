@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:infovalorant/extension/widget_extension.dart';
 import 'package:infovalorant/model/watch.dart';
 import 'package:infovalorant/ui/core/core_widget.dart';
@@ -7,6 +8,15 @@ import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class WatchTrailer extends StatelessWidget {
+  late final db = FirebaseDatabase.instance.ref();
+  late DatabaseReference databaseReference;
+
+  showData() {
+    db.once().then((snapshot) {
+      print(snapshot.toString());
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,11 +46,13 @@ Widget cardTrailer({required WatchTrailerModel item}) =>
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               ClipRRect(
                   child: CachedNetworkImage(
-                      height: 220,
+                      height: 180,
                       fit: BoxFit.cover,
                       imageUrl: item.image,
                       placeholder: (context, url) => const Center(
-                            child: CircularProgressIndicator(),
+                            child: CircularProgressIndicator(
+                              color: CoreColors.colorPrimary,
+                            ),
                           ),
                       errorWidget: (context, url, error) =>
                           const Icon(Icons.error)),
@@ -66,7 +78,7 @@ Widget cardTrailer({required WatchTrailerModel item}) =>
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                    top: 15, left: 25, right: 25, bottom: 25),
+                    top: 15, left: 25, right: 25, bottom: 15),
                 child: textBlack(item.desc, 9, FontWeight.w400),
               )
             ]),
