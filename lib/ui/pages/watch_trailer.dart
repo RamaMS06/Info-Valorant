@@ -1,19 +1,41 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:firebase_database/firebase_database.dart';
+import 'package:infovalorant/db/infovalorantdb.dart';
 import 'package:infovalorant/extension/widget_extension.dart';
 import 'package:infovalorant/model/watch.dart';
 import 'package:infovalorant/ui/core/core_widget.dart';
 import 'package:infovalorant/util/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:timeline_tile/timeline_tile.dart';
 
-class WatchTrailer extends StatelessWidget {
-  late final db = FirebaseDatabase.instance.ref();
-  late DatabaseReference databaseReference;
+class WatchTrailer extends StatefulWidget {
+  @override
+  State<WatchTrailer> createState() => _WatchTrailerState();
+}
 
-  showData() {
-    db.once().then((snapshot) {
-      print(snapshot.toString());
+class _WatchTrailerState extends State<WatchTrailer> {
+  late List<WatchTrailerModel> listTrailer;
+  late WatchTrailerModel trailer;
+
+
+  bool isLoading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    refreshTrailer();
+  }
+
+  Future refreshTrailer() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    // InfoValorantDB.instance.create(trailer);
+    
+
+    listTrailer = await InfoValorantDB.instance.readAllTrailer();
+    InfoValorantDB.instance.deleteAll();
+    setState(() {
+      isLoading = false;
     });
   }
 
@@ -24,15 +46,30 @@ class WatchTrailer extends StatelessWidget {
         appBar: CoreWidget.appBarCustom(context),
         backgroundColor: CoreColors.white,
         body: SafeArea(
-          child: ListView.builder(
-            scrollDirection: Axis.vertical,
-            itemCount: listTrailer.length,
-            itemBuilder: (context, index) =>
-                cardTrailer(item: listTrailer[index]),
-          ),
-        ));
+            child: Center(
+                child: isLoading
+                    ? const CircularProgressIndicator()
+                    : listTrailer.isEmpty
+                        ? dataEmpty()
+                        : ListView.builder(
+                            itemCount: listTrailer.length,
+                            itemBuilder: (context, index) => Center(
+                                  child: cardTrailer(item: listTrailer[index]),
+                                )))));
   }
 }
+
+Widget dataEmpty() => Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CoreWidget.imageCache(
+              'https://c.tenor.com/ksu0bUfO9akAAAAi/boombot.gif', 100, 100),
+          const SizedBox(height: 20),
+          textBlack('Woops! data is gone?', 16, FontWeight.w600)
+        ],
+      ),
+    );
 
 Widget cardTrailer({required WatchTrailerModel item}) =>
     Stack(clipBehavior: Clip.hardEdge, children: [
@@ -45,17 +82,8 @@ Widget cardTrailer({required WatchTrailerModel item}) =>
           child: Wrap(children: [
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               ClipRRect(
-                  child: CachedNetworkImage(
-                      height: 180,
-                      fit: BoxFit.cover,
-                      imageUrl: item.image,
-                      placeholder: (context, url) => const Center(
-                            child: CircularProgressIndicator(
-                              color: CoreColors.colorPrimary,
-                            ),
-                          ),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error)),
+                  child:
+                      CoreWidget.imageCache(item.image, double.infinity, 180),
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(25),
                       topRight: Radius.circular(25))),
@@ -87,14 +115,14 @@ Widget cardTrailer({required WatchTrailerModel item}) =>
       ),
       Positioned(
           right: 20,
-          top: 15,
+          top: 10,
           child: Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0)),
               elevation: 15,
-              child: Container(
+              child: SizedBox(
                 height: 40,
                 width: 40,
-                child: Center(child: textRed(item.index, 21, FontWeight.bold)),
+                child: Center(child: textRed(item.number, 21, FontWeight.bold)),
               ))),
     ]);

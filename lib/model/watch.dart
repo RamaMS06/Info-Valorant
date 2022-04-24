@@ -1,16 +1,65 @@
+const String tableWatchTrailer = 'watchtrailer';
+
+class WatchTrailerFields {
+  static const String id = '_id';
+  static const String image = 'image';
+  static const String title = 'title';
+  static const String desc = 'desc';
+  static const String number = 'number';
+  static const String url = 'url';
+
+  static final List<String> values = [id, image, title, desc, number, url];
+}
+
 class WatchTrailerModel {
+  late int? id;
   late String image;
   late String title;
   late String desc;
-  late String index;
+  late String number;
   late String url;
 
   WatchTrailerModel(
-      {required this.image,
+      {this.id,
+      required this.image,
       required this.title,
       required this.desc,
-      required this.index,
+      required this.number,
       required this.url});
+
+  WatchTrailerModel copy(
+          {int? id,
+          String? image,
+          String? title,
+          String? desc,
+          String? number,
+          String? url}) =>
+      WatchTrailerModel(
+          id: this.id,
+          image: this.image,
+          title: this.title,
+          desc: this.desc,
+          number: this.number,
+          url: this.url);
+
+  static WatchTrailerModel fromJson(Map<String, Object?> json) =>
+      WatchTrailerModel(
+        id: json[WatchTrailerFields.id] as int?,
+        image: json[WatchTrailerFields.image] as String,
+        title: json[WatchTrailerFields.title] as String,
+        desc: json[WatchTrailerFields.desc] as String,
+        number: json[WatchTrailerFields.number] as String,
+        url: json[WatchTrailerFields.url] as String,
+      );
+
+  Map<String, Object?> toJson() => {
+        WatchTrailerFields.id: id,
+        WatchTrailerFields.image: image,
+        WatchTrailerFields.title: title,
+        WatchTrailerFields.desc: desc,
+        WatchTrailerFields.number: number,
+        WatchTrailerFields.url: url
+      };
 }
 
 List<WatchTrailerModel> listTrailer = [
@@ -20,7 +69,7 @@ List<WatchTrailerModel> listTrailer = [
       desc: '''The fight has just begun.
 VALORANT, Riot Games' 5v5 character-based tactical shooter game is available for free
 ''',
-      index: "1",
+      number: "1",
       url:
           'https://www.youtube.com/watch?v=e_E9W2vsRbQ&list=PLtZR0uMja2BBHVQDLSnnLq0osabqtIG8o'),
   WatchTrailerModel(
@@ -29,7 +78,7 @@ VALORANT, Riot Games' 5v5 character-based tactical shooter game is available for
       desc: '''The fight has just begun.
 VALORANT, Riot Games' 5v5 character-based tactical shooter game is available for free
 ''',
-      index: "2",
+      number: "2",
       url:
           'https://www.youtube.com/watch?v=hhlgphVf-1g&list=PLtZR0uMja2BBHVQDLSnnLq0osabqtIG8o&index=5'),
   WatchTrailerModel(
@@ -37,7 +86,7 @@ VALORANT, Riot Games' 5v5 character-based tactical shooter game is available for
       title: '''DUALITY // Official Lore Cinematic - VALORANT''',
       desc:
           '''The fight has just begun. VALORANT, Riot Games' 5v5 character-based tactical shooter game is available for free''',
-      index: "3",
+      number: "3",
       url:
           'https://www.youtube.com/watch?v=-M_r8MKQ3mo&list=PLtZR0uMja2BBHVQDLSnnLq0osabqtIG8o&index=10'),
   WatchTrailerModel(
@@ -45,15 +94,15 @@ VALORANT, Riot Games' 5v5 character-based tactical shooter game is available for
       title: '''Spark - Neon Agent Trailer // VALORANT''',
       desc:
           '''Our newest Manila-born Agent is sprinting onto the scene with Episode 4: Disruption. Lace up and ''',
-      index: "4",
+      number: "4",
       url:
           'https://www.youtube.com/watch?v=-https://www.youtube.com/watch?v=dtx8CgjRmqE&list=PLtZR0uMja2BBHVQDLSnnLq0osabqtIG8o&index=17'),
   WatchTrailerModel(
-      image: 'https://c.tenor.com/OzI6Sz-CTfsAAAAd/valorant-valorant-meme.gif',
-      title: '''Spark - Neon Agent Trailer // VALORANT''',
+      image: 'https://media.giphy.com/media/e6wlM2pxP7A71bPrvO/giphy.gif',
+      title: '''VALORANT | Raze - Only good things!''',
       desc:
-          '''Our newest Manila-born Agent is sprinting onto the scene with Episode 4: Disruption. Lace up and ''',
-      index: "5",
+          '''For the music 'Banho de Folhas', by Luedji Luna and VALORANT, hit play and enjoy an amazing tour of the heart of Bahia with Raze.''',
+      number: "5",
       url:
-          'https://www.youtube.com/watch?v=-https://www.youtube.com/watch?v=dtx8CgjRmqE&list=PLtZR0uMja2BBHVQDLSnnLq0osabqtIG8o&index=17')
+          'youtube.com/watch?v=9J5DxyPSwI4&list=PLtZR0uMja2BBHVQDLSnnLq0osabqtIG8o&index=23')
 ];

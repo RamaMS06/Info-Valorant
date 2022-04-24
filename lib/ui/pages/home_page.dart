@@ -1,3 +1,4 @@
+import 'package:infovalorant/ui/core/core_widget.dart';
 import 'package:infovalorant/util/colors.dart';
 import 'package:infovalorant/extension/widget_extension.dart';
 import 'package:infovalorant/model/news.dart';
@@ -10,6 +11,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       bottomNavigationBar: navBarCustom(
           'ic_menu.png', 'ic_agents.png', 'ic_map.png', CoreColors.white),
@@ -151,21 +153,10 @@ class HomePage extends StatelessWidget {
                                             shadowColor:
                                                 CoreColors.colorPrimary,
                                             elevation: 6,
-                                            child: CachedNetworkImage(
-                                                height: 160,
-                                                width: 100,
-                                                fit: BoxFit.cover,
-                                                imageUrl:
-                                                    CoreString.url_defy_limits,
-                                                placeholder: (context, url) =>
-                                                    const Center(
-                                                        child: Center(
-                                                      child:
-                                                          CircularProgressIndicator(),
-                                                    )),
-                                                errorWidget: (context, url,
-                                                        error) =>
-                                                    const Icon(Icons.error))),
+                                            child: 
+                                              CoreWidget.imageCache(CoreString.url_defy_limits,
+                                               100, 160)
+                                            ),
                                       )
                                     ],
                                   ),
@@ -189,6 +180,7 @@ Widget headerHome(context) => Positioned.fill(
           CachedNetworkImage(
             imageUrl: CoreString.url_header_gif,
             fit: BoxFit.cover,
+            width: MediaQuery.of(context).size.width,
             height: 280,
           ),
           Padding(
@@ -200,13 +192,15 @@ Widget headerHome(context) => Positioned.fill(
                   textWhite('A 5v5 character-based tactical shooter', 12,
                       FontWeight.normal),
                   const SizedBox(height: 14),
-                  Image.asset("assets/ValorantRed.png"),
+                  Image.asset("assets/ValorantRed.png",
+                      height: 80, width: MediaQuery.of(context).size.width),
                   const SizedBox(height: 14),
                   Container(
                     decoration: BoxDecoration(
                         border: Border.all(color: CoreColors.white)),
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 4, vertical: 2),
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
                             primary: CoreColors.colorPrimary,
