@@ -62,7 +62,7 @@ class WatchTrailerModel {
       };
 }
 
-List<WatchTrailerModel> listTrailer = [
+List<WatchTrailerModel> listDefaultTrailer = [
   WatchTrailerModel(
       image: 'https://media.giphy.com/media/eV08lydIMcTftXX3vi/giphy.gif',
       title: '''DUELIST // VALORANT Cinematic Official Launch Trailer''',
@@ -70,13 +70,12 @@ List<WatchTrailerModel> listTrailer = [
 VALORANT, Riot Games' 5v5 character-based tactical shooter game is available for free
 ''',
       number: "1",
-      url:
-          'https://www.youtube.com/watch?v=e_E9W2vsRbQ&list=PLtZR0uMja2BBHVQDLSnnLq0osabqtIG8o'),
+      url: 'https://www.youtube.com/watch?v=e_E9W2vsRbQ&ab_channel=VALORANT'),
   WatchTrailerModel(
       image: 'https://c.tenor.com/UBem9pU9YgsAAAAC/yoru-valorant.gif',
-      title: '''DUELIST // VALORANT Cinematic Official Launch Trailer''',
+      title: '''RETAKE // Episode 2 Cinematic - VALORANT''',
       desc: '''The fight has just begun.
-VALORANT, Riot Games' 5v5 character-based tactical shooter game is available for free
+The game has changed. Now’s your chance to play VALORANT: https://riot.com/3idlntG
 ''',
       number: "2",
       url:
@@ -96,7 +95,7 @@ VALORANT, Riot Games' 5v5 character-based tactical shooter game is available for
           '''Our newest Manila-born Agent is sprinting onto the scene with Episode 4: Disruption. Lace up and ''',
       number: "4",
       url:
-          'https://www.youtube.com/watch?v=-https://www.youtube.com/watch?v=dtx8CgjRmqE&list=PLtZR0uMja2BBHVQDLSnnLq0osabqtIG8o&index=17'),
+          'https://www.youtube.com/watch?v=dtx8CgjRmqE&t=23s&ab_channel=VALORANT'),
   WatchTrailerModel(
       image: 'https://media.giphy.com/media/e6wlM2pxP7A71bPrvO/giphy.gif',
       title: '''VALORANT | Raze - Only good things!''',
@@ -104,5 +103,13 @@ VALORANT, Riot Games' 5v5 character-based tactical shooter game is available for
           '''For the music 'Banho de Folhas', by Luedji Luna and VALORANT, hit play and enjoy an amazing tour of the heart of Bahia with Raze.''',
       number: "5",
       url:
-          'youtube.com/watch?v=9J5DxyPSwI4&list=PLtZR0uMja2BBHVQDLSnnLq0osabqtIG8o&index=23')
+          'https://www.youtube.com/watch?v=ZGvz7jTVbc8&t=120s&ab_channel=VALORANT'),
+  WatchTrailerModel(
+      image:
+          'https://www.esports.net/wp-content/uploads/2022/04/Fade-Valorant.jpg',
+      title: '''İYİ GECELER - Fade Agent Trailer // VALORANT''',
+      desc:
+          '''Good night, VALORANT Protocol. Fade, VALORANT’s new Turkish Initiator Agent, steps out of the shadows to stalk her prey with ''',
+      number: "6",
+      url: 'https://www.youtube.com/watch?v=e7VOQ1l20eo&ab_channel=VALORANT')
 ];

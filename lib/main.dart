@@ -4,15 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 
-void main() => runApp(MyApp());
+void main(){
+
+  runApp(MyApp());
+} 
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.white,
-      statusBarBrightness: Brightness.dark,
-    ));
+        statusBarColor: Colors.black, statusBarBrightness: Brightness.dark));
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return MaterialApp(

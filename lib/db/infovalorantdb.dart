@@ -35,7 +35,6 @@ class InfoValorantDB {
       ${WatchTrailerFields.number} $textType,
       ${WatchTrailerFields.url} $textType)''');
   }
-  
 
   Future<WatchTrailerModel> create(WatchTrailerModel trailer) async {
     final db = await instance.database;
@@ -43,7 +42,6 @@ class InfoValorantDB {
 
     return trailer.copy(id: id);
   }
-  
 
   Future<WatchTrailerModel> read(int id) async {
     final db = await instance.database;
@@ -81,7 +79,7 @@ class InfoValorantDB {
         where: '${WatchTrailerFields.id} = ?', whereArgs: [id]);
   }
 
-  Future deleteAll() async{
+  Future deleteAll() async {
     final db = await instance.database;
     return await db.delete(tableWatchTrailer);
   }

@@ -11,7 +11,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       bottomNavigationBar: navBarCustom(
           'ic_menu.png', 'ic_agents.png', 'ic_map.png', CoreColors.white),
@@ -19,7 +18,7 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
           child: SingleChildScrollView(
         physics: const AlwaysScrollableScrollPhysics(),
-        child: Container(
+        child: SizedBox(
           height: 1500,
           child: Stack(
             children: [
@@ -85,7 +84,7 @@ class HomePage extends StatelessWidget {
                                     child: textRed('GO TO NEWS PAGE', 10,
                                         FontWeight.bold)),
                                 Positioned(
-                                  top: 26,
+                                  top: 26.5,
                                   height: 150,
                                   width: MediaQuery.of(context).size.width,
                                   child: ListView.separated(
@@ -153,10 +152,10 @@ class HomePage extends StatelessWidget {
                                             shadowColor:
                                                 CoreColors.colorPrimary,
                                             elevation: 6,
-                                            child: 
-                                              CoreWidget.imageCache(CoreString.url_defy_limits,
-                                               100, 160)
-                                            ),
+                                            child: CoreWidget.imageCache(
+                                                CoreString.url_defy_limits,
+                                                100,
+                                                160)),
                                       )
                                     ],
                                   ),
@@ -197,14 +196,15 @@ Widget headerHome(context) => Positioned.fill(
                   const SizedBox(height: 14),
                   Container(
                     decoration: BoxDecoration(
-                        border: Border.all(color: CoreColors.white)),
+                        border: Border.all(color: CoreColors.white),
+                        shape: BoxShape.rectangle),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 4, vertical: 2),
+                          horizontal: 4, vertical: 1),
                       child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            primary: CoreColors.colorPrimary,
-                          ),
+                              primary: CoreColors.colorPrimary,
+                              side: BorderSide.none),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 12, horizontal: 20),
@@ -256,8 +256,9 @@ Widget newsCard({
 Widget navBarCustom(
         String icon1, String icon2, String icon3, Color customColor) =>
     Material(
-      color: CoreColors.white,
+      color: Colors.transparent,
       child: CurvedNavigationBar(
+        height: 70.0,
         backgroundColor: customColor,
         color: CoreColors.colorPrimary,
         items: [

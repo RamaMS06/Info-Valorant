@@ -4,7 +4,8 @@ import 'package:infovalorant/util/colors.dart';
 import 'package:flutter/material.dart';
 
 class CoreWidget {
-  static PreferredSizeWidget appBarCustom(BuildContext context) => AppBar(
+  static PreferredSizeWidget appBarCustom(BuildContext context, String title) =>
+      AppBar(
         backgroundColor: CoreColors.colorPrimary,
         elevation: 8,
         shadowColor: CoreColors.colorPrimary,
@@ -14,7 +15,7 @@ class CoreWidget {
           },
           icon: const Icon(Icons.arrow_back),
         ),
-        title: textWhite('Watch Trailer', 16, FontWeight.bold),
+        title: textWhite(title, 16, FontWeight.bold),
       );
 
   static Widget imageCache(String url, double width, double height) =>
@@ -29,4 +30,16 @@ class CoreWidget {
                 ),
               ),
           errorWidget: (context, url, error) => const Icon(Icons.error));
+
+  static Widget customCard(double radius, double elevation, Widget child) =>
+      Card(
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius)),
+        elevation: elevation,
+        shadowColor: CoreColors.silver,
+        child: child,
+      );
+
+  static Widget customClip(Widget child, BorderRadius border) =>
+      ClipRRect(child: child, borderRadius: border);
 }
